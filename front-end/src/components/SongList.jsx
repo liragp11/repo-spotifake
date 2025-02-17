@@ -8,7 +8,7 @@ const SongList = ({ songsArray }) => {
   return (
     <div className="song-list">
       {songsArray
-        .filter((currSongObj, index) => index < items)
+        .filter((currentValue, index) => index < items)
         .map((currSongObj, index) => (
           <SongItem {...currSongObj} index={index} key={index} />
         ))}
