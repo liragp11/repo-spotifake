@@ -1,5 +1,5 @@
 import React from "react";
-import SongItem from "./songItem";
+import SongItem from "./songItem.jsx";
 import { useState } from "react";
 
 const SongList = ({ songsArray }) => {

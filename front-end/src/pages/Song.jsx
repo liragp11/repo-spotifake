@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import Player from "../components/Player";
+import Player from "../components/Player.jsx";
 import { songsArray } from "../Assets/database/songs";
 import { artistArray } from "../Assets/database/artists";
 
