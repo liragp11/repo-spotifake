@@ -1,0 +1,30 @@
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* DEFAULTS */
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#root {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+}

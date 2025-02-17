@@ -1,0 +1,145 @@
+> Criação de projeto React (tendo Node.JS instalado):
+
+	- abra o terminal
+
+	- digite: npm create vite@latest (utilize "." para instalar na pasta em que o terminal está rodando)
+		- confirmar com Y
+		- selecione o framework: React
+		- Selecione a linguagem: Javascript
+
+	- instale as dependências do node:
+		- digite: npm i
+		* caso obtenha um erro na instalação, verifique se está no diretório correto
+
+	- crie servidor local para rodar projeto:
+		- digite: npm run dev
+		- abra o localhost apontado pelo Vite
+		* não encerre este terminal, senão não conseguirá validar as alteraçõs do projeto
+
+> Criar sistema de páginas no react:
+	- Terminal: npm i react-router-dom
+
+> Nomeação de classes CSS:
+	- bloco__elemento--modificador
+		Ex: header__link--small
+
+> Utilize Props como parâmetros para os componentes. 
+	Assim pode-se realizar returns condicionais
+	Passar informações de um componente para outro
+
+> Operador ternário (if resumido):
+	- Ao invés de:
+		if (5 === "5")
+		{
+			// true
+		}
+		else
+		{
+			// false
+		}
+
+	- Escreva:
+		5 === "5" ? // true : // false
+		*se for uma comparação onde a própria variável condicional será exibida, pode-se escrever assim:
+		var ?? //false
+
+>Template Strings (alternativo a concatenação):
+	- `${variavel1}-string-${variavel2}`
+
+> Propriedades de um Array (vetor):
+	
+	- .map():
+			Array(length).map((currentValue, index) => currentValue)
+		- Mapeia as posições de um array baseado no comprimento especificado ou array apontado
+		- Se o array estiver vazio ele não pode preencher nenhum dos index
+			* currentValue: pode ser qualquer nome entro dos parenteses e no retorno (após a '=>')
+				também pode ser passado outra variável/objeto/componente
+
+	- .fill()
+		Array(length).fill().map(() => 'SingleItem')
+		- Cria um array com a variável/objeto/componente especificado 
+
+	- .filter()
+		Array.filter((currentValue, index) => currentValue > 5)
+		- Retorna um novo array baseado em uma condição predeterminada
+		* No exemplo acima, num array de 0 a 10, exibiria somente os valores de 6 em diante
+	
+> Spread operator:
+	- sintaxe: ...obj
+	* cria um novo objeto para que os atributos possam ser usados a partir desse novo
+		sem afetar o objeto original
+
+> Criar paginação no react
+	
+	instalar pacote:
+	- npm i react-router-dom
+	
+	importe os componentes da seguinte forma:
+	- import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+	Crie suas rotas no componente App.jsx:
+	<BrowserRouter>
+      <Header /> <-- Header e Footer devem estar fora das rotas, pois são comuns para todas as telas
+
+      <Routes>
+        <Route path="/" element={<Home />} /> <-- Aponte o diretório na propriedade path
+        <Route path="/page1" element={<Page1 />} /> <-- Especifique a página q deve ser carregada
+      </Routes>
+    </BrowserRouter>
+	
+	Troque todos as tags <a href=""/> por <Link to=""/>
+
+	* Validação de qual página está aberta no react:
+		- através desta lógica pode-se criar returns condicionais de componentes
+
+		- use o componente: useLocation()
+
+		- importe ele dessa forma:
+			import { useLocation } from "react-router-dom";
+
+		Ex:
+			const { pathname } = useLocation();
+  		const isHome = pathname === "/";
+
+			{isHome ? (
+          <Link className="item-list__link" to={path}>
+            Mostrar tudo
+          </Link>
+        ) : (
+          <></>
+        )}
+
+	Utilizar parametros de rota: useParams
+
+> Forma eficiente de criar um elemento html:
+	- Elemento com classe atribuído:
+		div.class
+		* substitua div e classe pelo elemento e classe desejado
+	- Multiplos elementos:
+		div*3
+		* cria o elemento desejado no número de vezes desejado
+
+> Criando arquivo package.json para back-end
+	- terminal: npm init -y
+
+	- adicione o atributo: "type": "module" em seu .json
+		assim poderá fazer importações 'ES modules'
+
+	* visualizar json no navegador:
+		- extensão json viewer
+
+> Criando banco de dados em MongoDB:
+
+	- Crie um Cluster
+		configure as credenciais de acesso a ele
+
+	- Selecione a aba de Clusters no menu lateral
+
+	- Browse Collections > Collections > + Create Database
+		escolha um nome e cria uma collection inicial (tabela)
+		* se necessário, cria as demais na sequência
+		crie um elemento inicial de teste
+	
+	- Crie um acesso global ao seu Cluster
+		Menu Lateral > Security > Network Access
+		+Add IP Address > Allow access from anywhere (0.0.0.0/0)
