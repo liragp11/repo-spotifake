@@ -14,7 +14,7 @@
 	- crie servidor local para rodar projeto:
 		- digite: npm run dev
 		- abra o localhost apontado pelo Vite
-		* não encerre este terminal, senão não conseguirá validar as alteraçõs do projeto
+		* não encerre este terminal, senão não conseguirá validar as alterações do projeto
 
 > Criar sistema de páginas no react:
 	- Terminal: npm i react-router-dom
