@@ -143,3 +143,47 @@
 	- Crie um acesso global ao seu Cluster
 		Menu Lateral > Security > Network Access
 		+Add IP Address > Allow access from anywhere (0.0.0.0/0)
+
+>Para o deploy do projeto realizar as seguintes configurações:
+
+	(	sempre teste as alterações com os comandos:	npm run build e	npm run start)
+
+ 	- na pasta raiz do projeto deve ter um arquivo package.json com as seguinte instrução
+		"scripts": {
+								"build": "npm install --prefix back-end && npm install --prefix front-end && npm run build --prefix front-end",
+								"start": "npm run start --prefix back-end"
+		}
+	- na pasta de back-end (conexão com banco de dados e api), outro package.json:
+		"scripts": {
+    						"start": "node ./api/server.js",
+		}
+
+	- faça os testes com os comandos:
+		npm run build
+		npm run start
+
+	- para a comunicação com a api, faça uma validação para diferenciar o ambiente
+		crie o arquivo .env e nele escreva:
+		NODE_ENV=development
+
+	- alterações no arquivo de conexão da API:
+		instale e importe o pacote (no diretório front-end): 
+			npm i dotenv
+			import "dotenv/config";
+		crie a variável para realizar a validação de ambiente
+			const { NODE_ENV } = process.env;
+			const URL = NODE_ENV === "development" ? "http://localhost:3000/api" : "/api/";
+
+	- dentro do arquivo de chamadas da API:
+		instale e importe o pacote (no diretório back-end):
+			npm i path
+			import path from "path";
+
+		adicione os 2 comandos:
+			app.use(express.static(path.join(__dirname, "../front-end/dist")));
+
+			app.get("*", async (request, response) => {
+				response.sendFile(path.join(__dirname, "../front-end/dist/index.html"));
+			});
+
+			* considere o diretório dist baseado em onde seu package.json está localizado
